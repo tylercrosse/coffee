@@ -1,21 +1,61 @@
-<!DOCTYPE html>
-<html lang="en" data-ng-app="coffee">
+<!doctype html>
+<!-- Declares meanMapApp as the starting Angular module -->
+<html class="no-js" ng-app="meanMapApp">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Coffee</title>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
-  <script src="/js/angularApp.js"></script>
+  <meta charset="utf-8">
+  <title>Scotch MEAN Map</title>
+  <meta name="description" content="An example demonstrating Google Map integration with MEAN Apps">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS -->
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <!-- Holder JS -->
+  <script src="../bower_components/holderjs/holder.js"></script>
+  <!-- Google Maps API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2DYmK8dAoUURGCKnIvWSf8W8i3GL4uCE"></script>
+  <!-- Modernizr -->
+  <script src="../bower_components/modernizr/bin/modernizr"></script>
+  <!-- JS Source -->
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <!-- <script src="../bower_components/jquery/jquery.js"></script> -->
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="../bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+  <!-- Angular Scripts -->
+  <script src="js/angularApp.js"></script>
+  <script src="js/addCtrl.js"></script>
+  <script src="js/gservice.js"></script>
+  <script src="js/queryCtrl.js"></script>
 </head>
+
 <body>
-  <h1>Client View</h1>
-  <div ng-controller="MainCtrl">
-    <div ng-repeat="drink in drinks">
-    {{drink.title}}
-    </div>
-    <form ng-submit="addDrink()">
-      <input type="text" ng-model="title"></input>
-      <button type="submit">Add Drink</button>
-    </form>
+  <div class="container">
+      <div class="header">
+          <ul class="nav nav-pills pull-right">
+              <!-- Links to the two menu views included -->
+              <li active><a href="/#/join">Join the Team</a></li>
+              <li disabled><a href="/#/find">Find Teammates</a></li>
+          </ul>
+          <h3 class="text-muted">The Scotch MEAN MapApp</h3>
+      </div>
+      <!-- Map and Side Panel -->
+      <div class="row content">
+          <!-- Google Map -->
+          <div class="col-md-7">
+              <div id="map" style="width:645px; height:645px"></div>
+          </div>
+          <!-- Side Panel Handled by ng-view -->
+          <div ng-view></div>
+
+      </div>
+      <hr/>
+      <!-- Footer -->
+      <div class="footer">
+          <p class="text-center"><span class="glyphicon glyphicon-check"></span> Created by Ahmed Haque for Scotch IO -
+              <a href="https://scotch.io/">App Tutorial</a> | <a href="https://github.com/afhaque/MeanMapAppV2.0">Github Repo</a></p>
+      </div>
   </div>
 </body>
+
 </html>
